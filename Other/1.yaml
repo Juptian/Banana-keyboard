@@ -1,0 +1,629 @@
+units:
+  padding_x: 0.7u
+  padding_y: 0.5u
+  tpx: u
+  tpy: u
+
+points:
+  mirror: &mirror
+    ref: thumb_third_only
+    shift: 25
+  zones:
+    matrix:
+      columns:
+        pinky:
+          key:
+            spread: 18
+            splay: 15
+            origin: [0, -17]
+            column_net: col_pinky
+          rows:
+            bottom:
+              bind: [5, 6, 0, 0]
+              row_net: row_bot
+            home:
+              bind: [0, 12, 0, 0]
+              row_net: row_mid
+            top:
+              bind: [0, 8, 5, 0]
+              row_net: row_top
+        ring:
+          key:
+            spread: 18
+            stagger: 17
+            splay: -10
+            origin: [0, -17]
+            column_net: col_ring
+          rows:
+            bottom:
+              bind: [0, 0, 2, 10]
+              row_net: row_bot
+            home:
+              bind: [5, 0, 5, 0]
+              row_net: row_mid
+            top:
+              bind: [0, 6, 0, 0]
+              row_net: row_top
+        middle:
+          key:
+            shift: [0.2, 0]
+            spread: 18
+            stagger: 17/3
+            splay: -5
+            origin: [0, -17]
+            column_net: col_middle
+          rows:
+            bottom:
+              bind: [0, 10, 0, 5]
+              row_net: row_bot
+            home:
+              bind: 5
+              row_net: row_mid
+            top:
+              bind: [0, 0, 0, 0]
+              row_net: row_top
+        index:
+          key:
+            spread: 19
+            stagger: -17/3
+            splay: -5
+            origin: [0, -17]
+            column_net: col_index
+          rows:
+            bottom:
+              bind: [0, 5, 0, 0]
+              row_net: row_bot
+            home:
+              bind: [5, 0, 5, 0]
+              row_net: row_mid
+            top:
+              bind: [0, 0, 0, 6]
+              row_net: row_top
+        inner:
+          key:
+            spread: 20
+            stagger: -17/6
+            origin: [0, -17]
+            column_net: col_inner
+          rows:
+            bottom:
+              bind: [5, 19, 20, 2]
+              row_net: row_bot
+            home:
+              bind: [0, 27, 0, 5]
+              row_net: row_mid
+            top:
+              bind: [0, 0, 5, 5]
+              row_net: row_top
+      rows:
+        bottom:
+          padding: 17
+        home:
+          padding: 17
+        top:
+
+
+    thumb:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [0,-24]
+      columns:
+        first:
+          key:
+            splay: -15
+            column_net: col_middle
+        second:
+          key:
+            spread: 20
+            splay: -15
+            origin: [-9, -9.5]
+            column_net: col_index
+        third:
+          key:
+            spread: 20
+            splay: -15
+            origin: [-9, -9.5]
+            column_net: col_inner
+      rows:
+        only:
+          padding: 17
+          row_net: row_thumb
+      key:
+        footprints:
+
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      asym: source
+      size: [U+0.5, U+0.5]
+
+  keys:
+    - what: rectangle
+      where: true
+      size: [U, U]
+
+  board:
+    - what: polygon
+      operation: stack
+      asym: both
+      points:
+        - ref: matrix_pinky_top
+          shift: [-padding_x,padding_x]
+        - ref: matrix_ring_top
+          shift: [-padding_y,padding_x]
+        - ref: matrix_middle_top
+          shift: [-padding_y,padding_x]
+        - ref: matrix_middle_top
+          shift: [padding_y,padding_x]
+        - ref: matrix_index_top
+          shift: [-padding_y,padding_x]
+        - ref: matrix_index_top
+          shift: [padding_y,padding_x]
+        - ref: matrix_inner_top
+          shift: [padding_y,padding_x]
+        - ref: matrix_inner_top
+          shift: [5padding_y,u]
+        - ref: thumb_second_only
+          shift: [padding_x,padding_x+1]
+        - ref: thumb_third_only
+          shift: [padding_x,padding_x]
+        - ref: thumb_third_only
+          shift: [padding_x,-padding_x]
+        - ref: thumb_second_only
+          shift: [padding_x,-padding_x]
+        - ref: thumb_first_only
+          shift: [0, -padding_x]
+        - ref: matrix_inner_bottom
+          shift: [-padding_y,-33]
+        - ref: matrix_index_bottom
+          shift: [0,-30]
+        - ref: matrix_middle_bottom
+          shift: [0,-35]
+        - ref: matrix_ring_bottom
+          shift: [0,-30]
+        - ref: matrix_pinky_bottom
+          shift: [-padding_x,-11]
+      fillet: 4
+
+  mirror_board:
+    - what: polygon
+      operation: stack
+      asym: both
+      points:
+        - ref: mirror_matrix_pinky_top
+          shift: [-padding_x,padding_x]
+        - ref: mirror_matrix_ring_top
+          shift: [-padding_y,padding_x]
+        - ref: mirror_matrix_middle_top
+          shift: [-padding_y,padding_x]
+        - ref: mirror_matrix_middle_top
+          shift: [padding_y,padding_x]
+        - ref: mirror_matrix_index_top
+          shift: [-padding_y,padding_x]
+        - ref: mirror_matrix_index_top
+          shift: [padding_y,padding_x]
+        - ref: mirror_matrix_inner_top
+          shift: [padding_y,padding_x]
+        - ref: mirror_matrix_inner_top
+          shift: [5padding_y,u]
+        - ref: mirror_thumb_second_only
+          shift: [padding_x,padding_x+1]
+        - ref: mirror_thumb_third_only
+          shift: [padding_x,padding_x]
+        - ref: mirror_thumb_third_only
+          shift: [padding_x,-padding_x]
+        - ref: mirror_thumb_second_only
+          shift: [padding_x,-padding_x]
+        - ref: mirror_thumb_first_only
+          shift: [0, -padding_x]
+        - ref: mirror_matrix_inner_bottom
+          shift: [-padding_y,-33]
+        - ref: mirror_matrix_index_bottom
+          shift: [0,-30]
+        - ref: mirror_matrix_middle_bottom
+          shift: [0,-35]
+        - ref: mirror_matrix_ring_bottom
+          shift: [0,-30]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [-padding_x,-11]
+      fillet: 4
+
+  combo:
+    - name: board
+    - operation: stack
+      name: keys
+    - operation: stack
+      name: mirror_board
+
+  xl_board:
+    - what: polygon
+      operation: stack
+      asym: both
+      points:
+        - ref: matrix_pinky_top
+          shift: [-tpx,tpx]
+        - ref: matrix_ring_top
+          shift: [-tpy,tpx]
+        - ref: matrix_middle_top
+          shift: [-tpy,tpx]
+        - ref: matrix_middle_top
+          shift: [tpy,tpx]
+        - ref: matrix_index_top
+          shift: [tpy,tpx]
+        - ref: matrix_index_top
+          shift: [tpy,tpx]
+        - ref: matrix_inner_top
+          shift: [tpy,tpx+3]
+        - ref: matrix_inner_top
+          shift: [3tpy, tpx+2]
+        - ref: thumb_second_only
+          shift: [tpx,tpx+1]
+        - ref: thumb_third_only
+          shift: [tpx,tpx-1]
+        - ref: thumb_third_only
+          shift: [tpx,-tpx]
+        - ref: thumb_second_only
+          shift: [tpx,-tpx]
+        - ref: thumb_first_only
+          shift: [0, -tpx]
+        - ref: matrix_inner_bottom
+          shift: [-tpy,-33]
+        - ref: matrix_index_bottom
+          shift: [0,-36]
+        - ref: matrix_middle_bottom
+          shift: [0,-42]
+        - ref: matrix_ring_bottom
+          shift: [0,-36]
+        - ref: matrix_pinky_bottom
+          shift: [-tpx,-15]
+      fillet: 4
+
+  mirror_xl_board:
+    - what: polygon
+      operation: stack
+      asym: both
+      points:
+        - ref: mirror_matrix_pinky_top
+          shift: [-tpx,tpx]
+        - ref: mirror_matrix_ring_top
+          shift: [-tpy,tpx]
+        - ref: mirror_matrix_middle_top
+          shift: [-tpy,tpx]
+        - ref: mirror_matrix_middle_top
+          shift: [tpy,tpx]
+        - ref: mirror_matrix_index_top
+          shift: [tpy,tpx]
+        - ref: mirror_matrix_index_top
+          shift: [tpy,tpx]
+        - ref: mirror_matrix_inner_top
+          shift: [tpy,tpx+3]
+        - ref: mirror_matrix_inner_top
+          shift: [3tpy, tpx+2]
+        - ref: mirror_thumb_second_only
+          shift: [tpx,tpx+1]
+        - ref: mirror_thumb_third_only
+          shift: [tpx,tpx-1]
+        - ref: mirror_thumb_third_only
+          shift: [tpx,-tpx]
+        - ref: mirror_thumb_second_only
+          shift: [tpx,-tpx]
+        - ref: mirror_thumb_first_only
+          shift: [0, -tpx]
+        - ref: mirror_matrix_inner_bottom
+          shift: [-tpy,-33]
+        - ref: mirror_matrix_index_bottom
+          shift: [0,-36]
+        - ref: mirror_matrix_middle_bottom
+          shift: [0,-42]
+        - ref: mirror_matrix_ring_bottom
+          shift: [0,-36]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [-tpx,-15]
+      fillet: 4
+
+  mounting_holds:
+    - what: circle
+      radius: 1
+      where:
+        ref: matrix_ring_bottom
+        shift: [0,-15]
+    - what: circle
+      radius: 1
+      where:
+        ref: matrix_pinky_top
+        shift: [5,15]
+    - what: circle
+      radius: 1
+      where:
+        ref: matrix_inner_top
+        shift: [13,5]
+    - what: circle
+      radius: 1
+      where:
+        ref: thumb_second_only
+        shift: [5,15]
+    - what: circle
+      radius: 1
+      where:
+        ref: thumb_third_only
+        shift: [10,-11]
+    - what: circle
+      radius: 1
+      where:
+        ref: matrix_index_home
+        shift: [-11,8]
+    - what: circle
+      radius: 1
+      where:
+        ref: matrix_index_bottom
+        shift: [-5,-15]
+
+  mirror_mounting_holds:
+    - what: circle
+      radius: 1
+      where:
+        ref: mirror_matrix_ring_bottom
+        shift: [0,-15]
+    - what: circle
+      radius: 1
+      where:
+        ref: mirror_matrix_pinky_top
+        shift: [5,15]
+    - what: circle
+      radius: 1
+      where:
+        ref: mirror_matrix_inner_top
+        shift: [13,5]
+    - what: circle
+      radius: 1
+      where:
+        ref: mirror_thumb_second_only
+        shift: [5,15]
+    - what: circle
+      radius: 1
+      where:
+        ref: mirror_thumb_third_only
+        shift: [10,-11]
+    - what: circle
+      radius: 1
+      where:
+        ref: mirror_matrix_index_home
+        shift: [-11,8]
+    - what: circle
+      radius: 1
+      where:
+        ref: mirror_matrix_index_bottom
+        shift: [-5,-15]
+
+  all:
+    - name: board
+    - operation: stack
+      name: xl_board
+    - operation: stack
+      name: mounting_holds
+    - operation: stack
+      name: mirror_xl_board
+    - operation: stack
+      name: mirror_board
+    - operation: stack
+      name: mirror_mounting_holds
+
+  both_boards:
+    - name: board
+    - operation: stack
+      name: mirror_board
+
+  holes_keys_board:
+    - name: board
+    - operation: stack
+      name: mounting_holds
+    - operation: stack
+      name: keys
+    - operation: stack
+      name: xl_board
+
+
+pcbs:
+  tutorial:
+    outlines:
+      main:
+        outline: both_boards
+
+    footprints:
+      mx_hotswap:
+        what: mx
+        where: true
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: true
+          from: "{{colrow}}"
+          to: "{{column_net}}"
+
+      diode:
+        what: diode
+        where: true
+        adjust.shift: [0, -5]
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+
+      promicro_l:
+        what: promicro
+        params:
+          orientation: "up"
+          P4: row_top
+          P5: row_mid
+          P6: row_bot
+          P7: row_thumb
+          P14: col_pinky
+          P15: col_ring
+          P18: col_middle
+          P19: col_index
+          P20: col_inner
+        where:
+          ref: thumb_first_only
+          shift: [15, 60]
+          rotate: -70
+
+      promicro_r:
+        what: promicro
+        params:
+          orientation: "up"
+          P19: row_top
+          P18: row_mid
+          P15: row_bot
+          P14: row_thumb
+          P7: col_pinky
+          P6: col_ring
+          P5: col_middle
+          P4: col_index
+          P3: col_inner
+        where:
+          ref: mirror_thumb_first_only
+          shift: [15, 60]
+          rotate: -70
+
+      reset_l:
+        what: button
+        params:
+          from: GND
+          to: RST
+        where:
+          ref: thumb_first_only
+          shift: [25, 40]
+          rotate: 20
+
+      pad_plus_l:
+        what: pad
+        where:
+          ref:
+            - matrix_inner_top
+          shift: [15, 0]
+          rotate: 0
+        params:
+          front: true
+          back: true
+          width: 1.5
+          height: 1.5
+          text: "B+"
+          net: Bplus
+
+      pad_minus_l:
+        what: pad
+        where:
+          ref:
+            - matrix_inner_top
+          shift: [15, 3]
+          rotate: 0
+        params:
+          front: true
+          back: true
+          width: 1.5
+          height: 1.5
+          text: "B-"
+          net: GND
+
+      trrs_l:
+        what: trrs
+        where:
+          ref:
+            - matrix_inner_bottom
+          shift: [38, -10]
+          rotate: -95
+        params:
+          reverse: true
+          symmetric: false
+          # The naming of the nets on this footprint is different from the Corne schematics.
+          A: ""
+          B: VCC
+          C: GND
+          D: P0
+
+      reset_r:
+        what: button
+        params:
+          from: GND
+          to: RST
+        where:
+          ref: mirror_thumb_first_only
+          shift: [25, 40]
+          rotate: 20
+
+      pad_plus_r:
+        what: pad
+        where:
+          ref:
+            - mirror_matrix_inner_top
+          shift: [15, 0]
+          rotate: 0
+        params:
+          front: true
+          back: true
+          width: 1.5
+          height: 1.5
+          text: "B+"
+          net: Bplus
+
+      pad_minus_r:
+        what: pad
+        where:
+          ref:
+            - mirror_matrix_inner_top
+          shift: [15, 3]
+          rotate: 0
+        params:
+          front: true
+          back: true
+          width: 1.5
+          height: 1.5
+          text: "B-"
+          net: GND
+
+      trrs_r:
+        what: trrs
+        where:
+          ref:
+            - mirror_matrix_inner_bottom
+          shift: [38, -10]
+          rotate: -95
+        params:
+          reverse: true
+          symmetric: false
+          # The naming of the nets on this footprint is different from the Corne schematics.
+          A: ""
+          B: VCC
+          C: GND
+          D: P0
+cases:
+  xl_bottom:
+     - name: xl_board
+       extrude: 1
+  _outerWall:
+    - name: xl_board
+      extrude: 5
+  _innerWall:
+    - name: board
+      extrude: 5
+
+  wall:
+    - what: case
+      name: _outerWall
+      operation: add
+    - what: case
+      name: _innerWall
+      operation: subtract
+  _holes:
+    - name: mounting_holds
+      extrude: 3
+  case:
+    - what: case
+      name: xl_bottom
+      operation: add
+    - what: case
+      name: wall
+      operation: add
+    - what: case
+      name: _holes
+      operation: add
